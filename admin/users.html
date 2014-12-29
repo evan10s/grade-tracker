@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin: Manage users</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/data-table.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#login-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="login.html">Grade Tracker</a>
+            </div>
+            <div class="collapse navbar-collapse" id="login-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">My Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="active"><a href="dashboard.html">Admin <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="user-logout"><a href="javascript:logOut()">Sign out</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <noscript>
+        <div class="alert alert-danger">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Oh, no! You don't have Javascript enabled. To continue, you'll need to <a href="http://www.enable-javascript.com/" target="_blank">enable Javascript</a>.
+        </div>
+    </noscript>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2" id="classes">
+                <div class="list-group">
+                    <a href="dashboard.html" class="list-group-item">Dashboard</a>
+                    <a href="users.html" class="list-group-item active">Manage users</a>
+                    <a href="classes.html" class="list-group-item">Manage classes</a>
+                </div>
+            </div>
+            <div class="col-md-10" id="users">
+                <fieldset>
+                    <legend>Users</legend>
+                    <a href="javascript:setupRoles()" class="btn btn-primary" role="button">Setup Roles</a> Current status: unknown (i.e., not being found)
+                    <br />
+                    <br />
+                    <table class="table table-responsive table-condensed" id="user-table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-table-add">
+
+                        </tbody>
+                    </table>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="delete-user">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Delete this user?</h4>
+                </div>
+                <div class="modal-body" id="delete-user-modal-message">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" id="final-delete-confirm" data-loading-text="Processing..." data-error-text="Couldn't delete user"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="change-user-role">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="change-role-modal-title"></h4>
+                </div>
+                <div class="modal-body" id="choose-role">
+                    <div class="btn-group-vertical list-group" data-toggle="buttons">
+                        <label class="btn list-group-item active" data-toggle="tooltip" data-placement="right" data-container="body" title="Students can see only their grades in their classes">
+                            <input type="radio" name="role-choices" id="student" value="student" autocomplete="off" checked>Student</label>
+                        <label class="btn list-group-item" data-toggle="tooltip" data-placement="right" data-container="body" title="Teachers can see and change grades for the students in their classes">
+                            <input type="radio" name="role-choices" id="teacher" value="teacher" autocomplete="off" checked>Teacher</label>
+                        <label class="btn list-group-item" data-toggle="tooltip" data-placement="right" data-container="body" title="Admins can see and change all grades and classes in addition to managing application-level settings, such as users and classes">
+                            <input type="radio" name="role-choices" id="admin" value="admin" autocomplete="off" checked>Admin</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" id="save-new-role" data-loading-text="Processing..." data-error-text="Error saving change">Save changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.3.2.min.js"></script>
+    <script src="../js/admin/global-backend.js"></script>
+    <script src="../js/admin/users.js"></script>
+    <script src="../js/admin/setuproles.js"></script>
+
+</body>
+
+</html>

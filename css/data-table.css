@@ -1,0 +1,15 @@
+.action-btn {
+    text-decoration: inherit;
+    color: inherit;
+    margin: 0 5px;
+}
+
+.action-btn:first-child {
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+.action-btn:last-child {
+    margin-left: 5px;
+    margin-right: 0;
+}
